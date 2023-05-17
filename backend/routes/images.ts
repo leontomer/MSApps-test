@@ -17,7 +17,7 @@ router.get("/images", async (req: Request, res: Response) => {
     res.json(data);
   } catch (error) {
     // Handle error
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json(error);
   }
 });
 
@@ -43,7 +43,7 @@ router.get("/sort", async (req: Request, res: Response) => {
     res.json(response.data);
   } catch (error) {
     // Handle error
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json(error);
   }
 });
 
@@ -65,7 +65,7 @@ router.get("/paginate", async (req: Request, res: Response) => {
     res.json(response.data.hits);
   } catch (error) {
     // Handle error
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json(error);
   }
 });
 

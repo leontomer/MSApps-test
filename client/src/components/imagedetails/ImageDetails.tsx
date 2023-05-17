@@ -1,6 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState, Image } from "../../Types";
 import { toggleModal } from "../../features/modal/modalSlice";
 import { Box, Typography, Modal } from "@mui/material";
@@ -40,37 +39,33 @@ const ImageDetails = (props: Props) => {
 
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <Modal open={open} onClose={handleClose}>
         <div>
           <Box sx={BoxStyle}>
             <CloseIcon className="close-icon" onClick={handleClose} />
             <Typography align="center" variant="h5">
               {imageDetailsHeader}
             </Typography>
-
-            <Typography align="center">
-              {tagsText} : {props.selectedImage?.tags}
-            </Typography>
-            <Typography align="center">
-              {downloadsText} : {props.selectedImage?.downloads}
-            </Typography>
-            <Typography align="center">
-              {likesText} : {props.selectedImage?.likes}
-            </Typography>
-            <Typography align="center">
-              {viewsText} : {props.selectedImage?.views}
-            </Typography>
-            <Typography align="center">
-              {commentsText} : {props.selectedImage?.comments}
-            </Typography>
-            <Typography align="center">
-              {collectionsText} : {props.selectedImage?.collections}
-            </Typography>
+            <div className="inside-data">
+              <Typography align="center">
+                {tagsText}: {props.selectedImage?.tags}
+              </Typography>
+              <Typography align="center">
+                {downloadsText}: {props.selectedImage?.downloads}
+              </Typography>
+              <Typography align="center">
+                {likesText}: {props.selectedImage?.likes}
+              </Typography>
+              <Typography align="center">
+                {viewsText}: {props.selectedImage?.views}
+              </Typography>
+              <Typography align="center">
+                {commentsText}: {props.selectedImage?.comments}
+              </Typography>
+              <Typography align="center">
+                {collectionsText}: {props.selectedImage?.collections}
+              </Typography>
+            </div>
           </Box>
         </div>
       </Modal>

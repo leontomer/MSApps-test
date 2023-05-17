@@ -5,7 +5,6 @@ import { RootState } from "../../Types";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { useDispatch } from "react-redux";
 import { resetErrorMessage } from "../../features/error/errorSlice";
-import { clickAwayReason } from "../../Constants";
 
 const ErrorAlert = () => {
   const dispatch = useDispatch();
@@ -18,14 +17,7 @@ const ErrorAlert = () => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === clickAwayReason) {
-      return;
-    }
-
+  const handleClose = () => {
     dispatch(resetErrorMessage());
   };
 

@@ -102,9 +102,9 @@ const Images: React.FC = () => {
                 alt={image.tags}
               ></img>
             </Card>
-            <ImageDetails selectedImage={selectedImage} />
           </div>
         ))}
+        <ImageDetails selectedImage={selectedImage} />
       </div>
       <ErrorAlert />
     </div>
