@@ -59,14 +59,16 @@ const Images: React.FC = () => {
 
   return (
     <div>
-      <div className="top-left-button">
-        <Button
-          disabled={page === startingPage}
-          onClick={() => handlePagination("prev")}
-          variant="contained"
-        >
-          {previousPage}
-        </Button>
+      <div className="button-container">
+        <span className="left-button">
+          <Button
+            disabled={page === startingPage}
+            onClick={() => handlePagination("prev")}
+            variant="contained"
+          >
+            {previousPage}
+          </Button>
+        </span>
         <span className="select">
           <Select
             value={category}
@@ -79,7 +81,7 @@ const Images: React.FC = () => {
             ))}
           </Select>
         </span>
-        <span className="top-right-button">
+        <span className="right-button">
           <Button
             disabled={page === endingPage}
             onClick={() => handlePagination("next")}
