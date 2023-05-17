@@ -1,39 +1,39 @@
-import axios, { AxiosResponse, AxiosError } from "axios";
+import axios, { AxiosResponse } from "axios";
+import { Image } from "../Types";
+import { store } from "../app/store";
+import { setImages } from "../features/images/imagesSlice";
+import { setErrorMessage } from "../features/error/errorSlice";
 
-interface Image {
-  id: number;
-  pageURL: string;
-  type: string;
-  tags: string;
-  previewURL: string;
-  previewWidth: number;
-  previewHeight: number;
-  webformatURL: string;
-  webformatWidth: number;
-  webformatHeight: number;
-  largeImageURL: string;
-  imageWidth: number;
-  imageHeight: number;
-  imageSize: number;
-  views: number;
-  downloads: number;
-  collections: number;
-  likes: number;
-  comments: number;
-  user_id: number;
-  user: string;
-  userImageURL: string;
-}
-
-export const getImages = async (type?: string): Promise<Image[]> => {
+export const getImages = async (type?: string): Promise<void> => {
   try {
     const url =
       type === undefined
         ? "http://localhost:5000/images"
         : `http://localhost:5000/images?type=${type}`;
     const response: AxiosResponse<Image[]> = await axios.get(url);
-    return response.data;
+    store.dispatch(setImages(response.data));
   } catch (error) {
-    throw error;
+    if (error instanceof Error) {
+      store.dispatch(setErrorMessage(error.message));
+    }
+  }
+};
+
+export const paginate = async (page: number, type?: string): Promise<void> => {
+  try {
+    const response: AxiosResponse<Image[]> = await axios.get(
+      "http://localhost:5000/paginate",
+      {
+        params: {
+          page: page,
+          type: type,
+        },
+      }
+    );
+    store.dispatch(setImages(response.data));
+  } catch (error) {
+    if (error instanceof Error) {
+      store.dispatch(setErrorMessage(error.message));
+    }
   }
 };

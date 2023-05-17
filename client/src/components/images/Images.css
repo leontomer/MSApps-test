@@ -1,0 +1,33 @@
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 25%;
+  }
+  
+  img{
+    height:100px;
+    width: 150px;
+    cursor: pointer;
+  }
+
+  .top-left-button {
+    margin-top: 20px;
+    margin-left: 25%;
+  }
+  
+  .top-right-button {
+    position: absolute;
+    left: 53%;
+    margin-top: 10px;
+  }
+
+  .select {
+    margin-left: 15%;
+  }
+  
+  .loader { 
+ margin-left: 45%;
+  }

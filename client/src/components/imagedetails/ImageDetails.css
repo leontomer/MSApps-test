@@ -1,0 +1,9 @@
+.close-icon {
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+}
+
+.details {
+    margin-top: 20px;
+}
