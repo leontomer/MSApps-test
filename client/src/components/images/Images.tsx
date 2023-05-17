@@ -70,7 +70,6 @@ const Images: React.FC = () => {
         <span className="select">
           <Select
             value={category}
-            label="Category"
             onChange={(e) => handleChangeCategory(e.target.value)}
           >
             {categories.map((cat, ind) => (
